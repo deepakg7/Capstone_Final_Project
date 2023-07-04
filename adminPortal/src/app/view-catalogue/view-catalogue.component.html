@@ -1,0 +1,19 @@
+<div class="existing">
+  <div class="container">
+        <mat-card class="card" *ngFor="let property of filteredProperties">
+          <img class="image" mat-card-image [src]="getImageSource(property.images)" alt={{property.desc}}>
+        <mat-card-header class="text">
+          <mat-card-title>{{property.property_name}}</mat-card-title>
+          <mat-card-subtitle>{{property.property_id}}</mat-card-subtitle>
+          <mat-card-subtitle><strong>Category:</strong> {{ property.category }}</mat-card-subtitle>
+          <mat-card-subtitle><strong>BHK:</strong> {{ property.bedroom }}</mat-card-subtitle>
+          <mat-card-subtitle><strong>Year Of Build:</strong> {{ property.year_build }}</mat-card-subtitle>
+          <mat-card-subtitle><strong>Location:</strong> {{ property.location }}</mat-card-subtitle>
+          <mat-card-subtitle><strong>Buy:</strong> {{ property.buy }}</mat-card-subtitle>
+          <mat-card-subtitle><strong>Rent:</strong> {{ property.rent }}</mat-card-subtitle>
+          <mat-card-subtitle><strong>Parking:</strong> {{ property.parking }}</mat-card-subtitle>
+          <mat-card-subtitle><strong>Agent Name:</strong> {{ property.agentName }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>   
+</div>

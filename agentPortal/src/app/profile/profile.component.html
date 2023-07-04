@@ -1,0 +1,30 @@
+<div class="sideNavContainer">
+    <div class="container">
+      <div class="activitiesBox">
+        <div class="psAddPhotoTop">
+          <div class="psAddPhoto">
+            <div class="photoHolder">
+              <span class="psPhoto">A</span>
+            </div>
+          </div>
+          <div class="psUserInfo">
+            <h4>Akash</h4>
+            <span>9970415008</span>
+          </div>
+        </div>
+        <ul class="activitiesLinks">
+          <li>Edit Profile</li>    
+              <hr>
+          
+          <!-- <li><a href="/my-garage">My Garage</a></li> -->
+          <li class="logOut"><a href="#" class="primaryButton">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <ng-container *ngIf="isComponentVisible">
+    <div class="container">
+      <ng-container *ngComponentOutlet="displayedComponent"></ng-container>
+    </div>
+  </ng-container>

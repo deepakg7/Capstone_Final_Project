@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row header">
+      <h1>Booked Slots &nbsp;</h1>
+      <h3>Below are the booked slots by User</h3>
+    </div>
+    <div class="input-container">
+      <input type="text" [(ngModel)]="searchValue" class="search-input" placeholder="Search">
+      <button class="search-button" (click)="search()">Search</button>
+    </div>
+      <table class="rwd-table">
+        <tbody>
+          <tr>
+            <th scope="col">Username</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Date of Booking</th>
+              <th scope="col">Slot Timing</th>
+              <th scope="col">Email</th>
+              <th scope="col">Property ID</th>
+          </tr>
+          <tr *ngFor="let slot of filteredProperties">
+            <td data-th="Username">
+              {{ slot.cName }}
+            </td>
+            <td data-th="Mobile Number">
+              {{ slot.mobNo }}
+            </td>
+            <td data-th="Date of Booking">
+              {{ slot.date }}
+            </td>
+            <td data-th="Slot Timing">
+              {{ slot.slots }}
+            </td>
+            <td data-th="Email">
+              {{ slot.email }}
+            </td>
+            <td data-th="Location">
+              {{ slot.propertyId }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr>

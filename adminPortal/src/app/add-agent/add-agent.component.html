@@ -1,0 +1,64 @@
+<div class="main-body">
+  
+    <mat-expansion-panel class="expansion" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header class="header">
+        <mat-panel-description class="addProperty">
+          Add Agent
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="form" [formGroup]="addAgentForm" (submit)="addAgentDetails()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Agent Name</mat-label>
+          <input matInput formControlName="agentName" placeholder="Ex. John Doe">
+        </mat-form-field>
+        <div *ngIf="addAgentForm.get('agentName')?.invalid && addAgentForm.get('agentName')?.dirty || addAgentForm.get('agentName')?.touched" class="error-message">
+          <div *ngIf="addAgentForm.get('agentName')?.errors?.['agentName']">Agent Name Required</div>
+      </div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput formControlName="agentMobile" placeholder="Ex. 10 digit">
+          </mat-form-field>
+          <div *ngIf="addAgentForm.get('agentMobile')?.invalid && addAgentForm.get('agentMobile')?.dirty || addAgentForm.get('agentMobile')?.touched" class="error-message">
+            <div *ngIf="addAgentForm.get('agentMobile')?.errors?.['agentMobile']">Mobile Number Required</div>
+            <div *ngIf="addAgentForm.get('agentMobile')?.errors?.['minlength']">Mobile Number Should be of 10 Characters</div>
+            <div *ngIf="addAgentForm.get('agentMobile')?.errors?.['maxlength']">Mobile Number Should less than 10 Characters</div>
+        </div>
+          <div class="description form-floating">
+            <textarea class="form-control" formControlName="agentAddress" placeholder="Leave a comment here" id="floatingTextarea" style="height: 5em;"></textarea>
+            <label for="floatingTextarea">Address</label>
+          </div>
+          <div *ngIf="addAgentForm.get('agentAddress')?.invalid && addAgentForm.get('agentAddress')?.dirty || addAgentForm.get('agentAddress')?.touched" class="error-message">
+            <div *ngIf="addAgentForm.get('agentAddress')?.errors?.['agentAddress']">Mobile Number Required</div>
+          </div>
+          <div class="file btn btn-lg btn-secondary">
+            Upload Images
+            <input formControlName="image" type="file" id="image" #fileInput (change)="onFileSelected($event)"/>
+        </div> &nbsp;
+          <mat-form-field class="example-full-width">
+            <mat-label>Email ID</mat-label>
+            <input matInput formControlName="agentEmail" placeholder="Ex. 10 digit">
+          </mat-form-field>
+          <div *ngIf="addAgentForm.get('agentEmail')?.invalid && addAgentForm.get('agentEmail')?.dirty || addAgentForm.get('agentEmail')?.touched" class="error-message">
+            <div *ngIf="addAgentForm.get('agentEmail')?.errors?.['agentEmail']">Email ID Required</div>\
+            <div *ngIf="addAgentForm.get('agentEmail')?.errors?.['pattern']">Email ID NOT VALID</div>
+          </div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="agentPassoword" placeholder="Ex. 10 digit">
+          </mat-form-field>
+          <div *ngIf="addAgentForm.get('agentPassoword')?.invalid && addAgentForm.get('agentPassoword')?.dirty || addAgentForm.get('agentPassoword')?.touched" class="error-message">
+            <div *ngIf="addAgentForm.get('agentPassoword')?.errors?.['agentPassoword']">Passsword Required</div>
+            <div *ngIf="addAgentForm.get('agentPassoword')?.errors?.['minlength']">Password Should be of minimum 8 Characters</div>
+            <div *ngIf="addAgentForm.get('agentPassoword')?.errors?.['maxlength']">Password Should less than 30 Characters</div>
+        </div>
+        
+        <br>
+        <div class="d-grid gap-2">
+        <button id="submit" type="submit" class="btn btn-primary">Add Agent</button>
+      </div>
+      </form>
+    </mat-expansion-panel>
+</div>
+
+  

@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>All Agents</h1>
+  <div class="input-container">
+    <input type="text" [(ngModel)]="searchValue" class="search-input" placeholder="Search">
+    <button class="search-button" (click)="search()">Search</button>
+  </div>
+    <table class="rwd-table">
+      <tbody>
+        <tr>
+          <th>Agent Photo</th>
+          <th>Agent Name</th>
+          <th>Agent Email</th>
+          <th>Agent Mobile</th>
+          <th>Agent Address</th>
+        </tr>
+        <tr *ngFor="let property of filteredProperties">
+          <td id="photo" data-th="Agent Photo">
+            <img class="image" mat-card-image [src]="getImageSource(property.image)" alt="Photo of a Shiba Inu">
+          </td>
+          <td data-th="Agent Name">
+            {{ property.agentName }}
+          </td>
+          <td data-th="Agent Email">
+            {{ property.agentEmail }}
+          </td>
+          <td data-th="Agent Mobile">
+            {{ property.agentMobile }}
+          </td>
+          <td data-th="Agent Address">
+            {{ property.agentAddress }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

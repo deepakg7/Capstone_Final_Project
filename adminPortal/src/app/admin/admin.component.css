@@ -1,0 +1,14 @@
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .btn-outline-primary {
+    color: #42c1e8;
+    border-color: #77eff9;
+  }
+  
+  .btn-outline-primary:hover {
+    color: #fff;
+    background-color: #30cded;
+    border-color: #f6f8f9;
+  }
+  

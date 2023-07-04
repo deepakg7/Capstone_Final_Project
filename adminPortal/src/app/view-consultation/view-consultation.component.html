@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row header">
+      <h1>Consulation &nbsp;</h1>
+      <h3>Below are the questions of User</h3>
+    </div>
+    <div class="search input-container">
+      <input type="text" [(ngModel)]="searchValue" class="search-input" placeholder="Search">
+      <button class="search-button" (click)="search()">Search</button>
+    </div>
+    <div class="row body" *ngFor="let consult of filteredProperties">
+      <form action="#">
+        <label>ID: {{ consult.consultId }}</label>
+        <ul>
+          
+          <li>
+            <p class="left">
+              <label class="title" for="first_name">First Name</label>
+              <label name="first_name">{{ consult.fName }}</label>   
+            </p>
+            <p class="pull-right">
+              <label class="title" for="last_name">Last Name</label>
+              <label name="last_name">{{ consult.lName }}</label>    
+            </p>
+          </li>
+          
+          <li>
+            <p>
+              <label class="title" for="email">Email ID</label>
+              <label name="email">{{ consult.email }}</label>
+            </p>
+          </li>        
+          <li>
+            <label class="title" for="comments">Comment</label>
+            <label name="comments">{{ consult.message }}</label>
+          </li>
+          
+        </ul>
+        <div class="text-center">
+        <button type="button" class="btn" (click)="delete(consult.consultId)"><i class="bi bi-bookmark-check-fill"></i>Completed</button>
+      </div>
+      </form> 
+      <hr>
+    </div>
+  </div>

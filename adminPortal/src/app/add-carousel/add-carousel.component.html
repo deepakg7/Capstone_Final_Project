@@ -1,0 +1,54 @@
+<div class="main-body">
+    
+    <mat-expansion-panel class="expansion" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header class="header">
+        <mat-panel-description class="addProperty">
+          Add Carousal Properties
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <h2>Existing Carousal Images</h2>
+      <div class="existing">
+      <div class="container">
+            <mat-card class="card" *ngFor="let prop of Cproperty">
+              <img class="image" mat-card-image [src]="getImageSource(prop.images)" alt="Photo of a Shiba Inu">
+            <mat-card-header class="header">
+              <mat-card-title>{{prop.property_name}}</mat-card-title>
+              <mat-card-subtitle>{{prop.desc}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions class="action-button">
+              <button mat-button [disabled]="showAddexists">Add</button>
+              <button mat-button [disabled]="showRemoveexists" (click)="deleteCarousel(prop.property_id)">Remove</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+        <hr>
+        <div *ngIf="isCarouselFull" class="alert alert-danger" role="alert">
+          You can add only 4 Images to Carousel
+        </div>
+    <h2>Add Carousal Images</h2>
+    <div class="existing">
+        
+          <div class="container">
+              <mat-card class="card2" *ngFor="let prop of property">
+                <img class="image" mat-card-image [src]="getImageSource(prop.images)" alt="Photo of a Shiba Inu">
+              <mat-card-header>
+                <mat-card-title>{{prop.property_name}}</mat-card-title>
+                <mat-card-subtitle>{{prop.desc}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-actions>
+                <button mat-button [disabled]="showAdd" (click)="AddToCarousel(prop.property_id)">Add</button>
+                <button mat-button [disabled]="showRemove">Remove</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>   
+      </div>
+      <div class="d-grid gap-2">
+        <button id="submit" type="submit" class="btn btn-primary">Done</button>
+      </div>
+    </mat-expansion-panel>
+    </div>
+    
+  

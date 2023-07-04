@@ -1,0 +1,169 @@
+<div class="main-body">
+    <mat-expansion-panel class="expansion" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header class="header">
+        <mat-panel-description class="addProperty">
+          Add Properties
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="form" method="POST" action="http://localhost:8085/api/property/addProperty" [formGroup]="AddPropertyForm" (submit)="addProperty()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="property_name"  placeholder="Ex. Relaxing Villa">
+        </mat-form-field>
+        <div *ngIf="AddPropertyForm.get('property_name')?.invalid && AddPropertyForm.get('property_name')?.dirty || AddPropertyForm.get('property_name')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('property_name')?.errors?.['required']">Property Name Required</div>
+            <div *ngIf="AddPropertyForm.get('property_name')?.errors?.['minlength']">Property Name must have minimum 2 Charater</div>
+        </div>
+        
+        <select formControlName="agentName" class="form-select">
+          <option selected disabled>Agent List</option>
+          <option *ngFor="let ag of agent" value="{{ag.agentId}}">{{ag.agentName}}</option>
+        </select>
+        <div *ngIf="AddPropertyForm.get('agentName')?.invalid && AddPropertyForm.get('agentName')?.dirty || AddPropertyForm.get('agentName')?.touched" class="error-message">
+          <div *ngIf="AddPropertyForm.get('agentName')?.errors?.['required']">Agent Name Required</div>
+      </div>
+
+          <div class="description form-floating">
+            <textarea class="form-control" formControlName="desc" placeholder="Leave a comment here" id="floatingTextarea" style="height: 9em"></textarea>
+            <label for="floatingTextarea">Description</label>
+          </div>
+          <div *ngIf="AddPropertyForm.get('desc')?.invalid && AddPropertyForm.get('desc')?.dirty || AddPropertyForm.get('desc')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('desc')?.errors?.['required']">Description Required</div>
+            <div *ngIf="AddPropertyForm.get('desc')?.errors?.['minlength']">Description must have minimum 5 Charater</div>
+        </div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Bedrooms</mat-label>
+            <input matInput formControlName="bedroom" placeholder="Ex. 1">
+          </mat-form-field>
+          <div *ngIf="AddPropertyForm.get('bedroom')?.invalid && AddPropertyForm.get('bedroom')?.dirty || AddPropertyForm.get('bedroom')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('bedroom')?.errors?.['required']">Bedroom Data Required</div>
+        </div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Bathroom</mat-label>
+            <input matInput formControlName="bathroom" placeholder="Ex. 1">
+          </mat-form-field>
+          <div *ngIf="AddPropertyForm.get('bathroom')?.invalid && AddPropertyForm.get('bathroom')?.dirty || AddPropertyForm.get('bathroom')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('bathroom')?.errors?.['bathroom']">Bathroom Data Required</div>
+        </div>
+
+
+          <select class="form-select" formControlName="parking">
+            <option selected disabled>Parking</option>
+            <option value=true>Yes</option>
+            <option value=false>No</option>
+          </select>
+          <div *ngIf="AddPropertyForm.get('parking')?.invalid && AddPropertyForm.get('parking')?.dirty || AddPropertyForm.get('parking')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('parking')?.errors?.['parking']">Parking Data Required</div>
+        </div>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Area</mat-label>
+            <input matInput formControlName="area" placeholder="Ex. 1000 (in sq. foot)">
+          </mat-form-field>
+          <div *ngIf="AddPropertyForm.get('area')?.invalid && AddPropertyForm.get('area')?.dirty || AddPropertyForm.get('area')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('area')?.errors?.['area']">Area Required</div>
+        </div>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Price for Buy</mat-label>
+            <input matInput formControlName="buyPrice" placeholder="Ex. 1000 (in sq. foot)">
+          </mat-form-field>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Price for Rent</mat-label>
+            <input matInput formControlName="rentPrice" placeholder="Ex. 1000 (in sq. foot)">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Year of Build</mat-label>
+            <input matInput formControlName="year_build" [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div *ngIf="AddPropertyForm.get('year_build')?.invalid && AddPropertyForm.get('year_build')?.dirty || AddPropertyForm.get('year_build')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('year_build')?.errors?.['year_build']">Year of Build Required</div>
+        </div>
+
+          <div class="form-check">
+            <input formControlName="buy" class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+              Buy
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input formControlName="rent" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Rent
+            </label>
+          </div>
+
+           <!-- ----------- -->
+          <div class="form-check">
+            <input formControlName="balcony" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              balcony
+            </label>
+          </div>
+          <div class="form-check">
+            <input formControlName="deck" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              deck
+            </label>
+          </div>
+          <div class="form-check">
+            <input formControlName="cableTV" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              cableTV
+            </label>
+          </div>
+          <div class="form-check">
+            <input formControlName="pool" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              pool
+            </label>
+          </div>
+          <select class="form-select" formControlName="category">
+            <option selected disabled>Category</option>
+            <option value="Flat">Flat</option>
+            <option value="Villa">Villa</option>
+            <option value="Plots">Plots</option>
+          </select>
+          <div *ngIf="AddPropertyForm.get('category')?.invalid && AddPropertyForm.get('category')?.dirty || AddPropertyForm.get('category')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('category')?.errors?.['category']">Property Name Required</div>
+        </div>
+          <select class="form-select" formControlName="location">
+            <option selected disabled>Location</option>
+            <option value="Pune">Pune</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Lonavla">Lonavla</option>
+          </select>
+          <div *ngIf="AddPropertyForm.get('location')?.invalid && AddPropertyForm.get('location')?.dirty || AddPropertyForm.get('location')?.touched" class="error-message">
+            <div *ngIf="AddPropertyForm.get('location')?.errors?.['location']">Location Required</div>
+        </div>
+
+        <div class="file btn btn-lg btn-secondary">
+          Upload Images
+          <input type="file" id="image" formControlName="image" name="image" #fileInput (change)="onFileSelected($event)"/>
+      </div>
+       &nbsp;
+      <mat-form-field class="example-full-width">
+        <mat-label>Video Link</mat-label>
+        <input matInput formControlName="video" placeholder="Paste video link here">
+      </mat-form-field>  
+      <div *ngIf="AddPropertyForm.get('image')?.invalid && AddPropertyForm.get('image')?.dirty || AddPropertyForm.get('image')?.touched" class="error-message">
+        <div *ngIf="AddPropertyForm.get('image')?.errors?.['image']">ImageRequired</div>
+    </div>    
+        <br>
+        <div class="d-grid gap-2">
+        <button id="submit" type="submit" class="btn btn-primary">Add Property</button>
+      </div>
+      </form>
+    </mat-expansion-panel>
+  
+</div>
+
+  

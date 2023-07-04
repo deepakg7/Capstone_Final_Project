@@ -1,0 +1,61 @@
+.main-body{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 5%;
+  }
+  .expansion{
+    width: 70vw;
+}
+.addProperty{
+    justify-content: center;
+  } 
+  .header{
+    padding: 1%;
+    /* border: 1px solid rgb(170, 163, 163); */
+  }
+  .existing{
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+    border: 1px solid rgb(170, 163, 163);
+    margin-bottom: 2%; 
+    width: 67vw;
+    overflow-y: scroll;
+  }
+  .image{
+    height: 200px;
+    background-color: black;
+  }
+ .container
+ {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    margin-left: 5%;
+    
+ }
+ .card
+{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 400px;
+    padding: 1%;
+    margin: 1%;
+}
+
+.card2
+{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 1%;
+    margin: 1%;
+}
+
+.header, .action-button {
+  display: flex;
+  justify-content: center;
+}
